@@ -1,7 +1,7 @@
 # Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold
 
 <p align="center">
-    <img src="DragGAN.gif", width="900">
+    <img src="DragGAN.gif", width="700">
 </p>
 
 **Figure:** *Drag your GAN.*
