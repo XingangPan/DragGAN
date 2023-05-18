@@ -18,7 +18,7 @@ Code will be released in June.
 @inproceedings{pan2023draggan,
     title={Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold}, 
     author={Pan, Xingang and Tewari, Ayush, and Leimkühler, Thomas and Liu, Lingjie and Meka, Abhimitra and Theobalt, Christian},
-	booktitle = {ACM SIGGRAPH 2022 Conference Proceedings},
+    booktitle = {ACM SIGGRAPH 2022 Conference Proceedings},
     year={2023}
 }
 ```
