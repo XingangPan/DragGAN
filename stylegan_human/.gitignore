@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__
+*.pt
+*.pth
+*.pdparams
+*.pdiparams
+*.pdmodel
+*.pkl
+*.info
+*.yaml
