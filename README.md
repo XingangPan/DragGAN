@@ -1,14 +1,36 @@
-# Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold
-
 <p align="center">
-    <img src="DragGAN.gif", width="700">
+
+  <h1 align="center">Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold</h1>
+  <p align="center">
+    <a href="https://xingangpan.github.io/"><strong>Xingang Pan</strong></a>
+    ·
+    <a href="https://ayushtewari.com/"><strong>Ayush Tewari</strong></a>
+    ·
+    <a href="https://people.mpi-inf.mpg.de/~tleimkue/"><strong>Thomas Leimkühler</strong></a>
+    ·
+    <a href="https://lingjie0206.github.io/"><strong>Lingjie Liu</strong></a>
+    ·
+    <a href="https://www.meka.page/"><strong>Abhimitra Meka</strong></a>
+    ·
+    <a href="http://www.mpi-inf.mpg.de/~theobalt/"><strong>Christian Theobalt</strong></a>
+  </p>
+  <h2 align="center">SIGGRAPH 2023 Conference Proceedings</h2>
+  <div align="center">
+    <img src="DragGAN.gif", width="600">
+  </div>
+
+  <p align="center">
+  <br>
+    <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
+    <a href="https://twitter.com/XingangP"><img alt='Twitter' src="https://img.shields.io/twitter/follow/XingangP?label=%40XingangP"></a>
+    <a href="https://arxiv.org/abs/2305.10973">
+      <img src='https://img.shields.io/badge/Paper-PDF-green?style=for-the-badge&logo=adobeacrobatreader&logoWidth=20&logoColor=white&labelColor=66cc00&color=94DD15' alt='Paper PDF'>
+    </a>
+    <a href='https://vcai.mpi-inf.mpg.de/projects/DragGAN/'>
+      <img src='https://img.shields.io/badge/DragGAN-Page-orange?style=for-the-badge&logo=Google%20chrome&logoColor=white&labelColor=D35400' alt='Project Page'></a>
+    <a href="https://huggingface.co/spaces/radames/DragGan"><img alt="Huggingface" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-DragGAN-orange"></a>
+  </p>
 </p>
-
-**Figure:** *Drag your GAN.*
-
-> **Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold** <br>
-> Xingang Pan, Ayush Tewari, Thomas Leimkühler, Lingjie Liu, Abhimitra Meka, Christian Theobalt<br>
-> *SIGGRAPH 2023 Conference Proceedings*
 
 ## Requirements
 
