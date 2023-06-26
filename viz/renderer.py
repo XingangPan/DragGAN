@@ -95,6 +95,9 @@ class Renderer:
             if hasattr(self, 'pkl'):
                 if self.pkl != args['pkl']:
                     init_net = True
+            if hasattr(self, 'w_load'):
+                if self.w_load is not args['w_load']:
+                    init_net = True
             if hasattr(self, 'w0_seed'):
                 if self.w0_seed != args['w0_seed']:
                     init_net = True
