@@ -35,7 +35,7 @@
 
 ## Requirements
 
-Please follow the requirements of [https://github.com/NVlabs/stylegan3](https://github.com/NVlabs/stylegan3).
+Please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).
 
 ## Download pre-trained StyleGAN2 weights
 
