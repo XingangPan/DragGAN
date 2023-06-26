@@ -47,7 +47,7 @@ class CaptureSuccess(Exception):
 
 def add_watermark_np(input_image_array, watermark_text="Watermark"):
     image = Image.fromarray(np.uint8(input_image_array)).convert("RGBA")
-    
+
     # Initialize text image
     txt = Image.new('RGBA', image.size, (255, 255, 255, 0))
     font = ImageFont.truetype('arial.ttf', round(25/512*image.size[0]))
@@ -68,20 +68,25 @@ def add_watermark_np(input_image_array, watermark_text="Watermark"):
 #----------------------------------------------------------------------------
 
 class Renderer:
-    def __init__(self):
+    def __init__(self, disable_timing=False):
         self._device        = torch.device('cuda')
         self._pkl_data      = dict()    # {pkl: dict | CapturedException, ...}
         self._networks      = dict()    # {cache_key: torch.nn.Module, ...}
         self._pinned_bufs   = dict()    # {(shape, dtype): torch.Tensor, ...}
         self._cmaps         = dict()    # {name: torch.Tensor, ...}
         self._is_timing     = False
-        self._start_event   = torch.cuda.Event(enable_timing=True)
-        self._end_event     = torch.cuda.Event(enable_timing=True)
+        if not disable_timing:
+            self._start_event   = torch.cuda.Event(enable_timing=True)
+            self._end_event     = torch.cuda.Event(enable_timing=True)
+        self._disable_timing = disable_timing
         self._net_layers    = dict()    # {cache_key: [dnnlib.EasyDict, ...], ...}
 
     def render(self, **args):
-        self._is_timing = True
-        self._start_event.record(torch.cuda.current_stream(self._device))
+        if self._disable_timing:
+            self._is_timing = False
+        else:
+            self._start_event.record(torch.cuda.current_stream(self._device))
+            self._is_timing = True
         res = dnnlib.EasyDict()
         try:
             init_net = False
@@ -107,7 +112,8 @@ class Renderer:
             self._render_drag_impl(res, **args)
         except:
             res.error = CapturedException()
-        self._end_event.record(torch.cuda.current_stream(self._device))
+        if not self._disable_timing:
+            self._end_event.record(torch.cuda.current_stream(self._device))
         if 'image' in res:
             res.image = self.to_cpu(res.image).detach().numpy()
             res.image = add_watermark_np(res.image, 'AI Generated')
@@ -115,8 +121,9 @@ class Renderer:
             res.stats = self.to_cpu(res.stats).detach().numpy()
         if 'error' in res:
             res.error = str(res.error)
+        # if 'stop' in res and res.stop:
 
-        if self._is_timing:
+        if self._is_timing and not self._disable_timing:
             self._end_event.synchronize()
             res.render_time = self._start_event.elapsed_time(self._end_event) * 1e-3
             self._is_timing = False
@@ -228,6 +235,7 @@ class Renderer:
                 res.error = CapturedException()
             G.synthesis.input.transform.copy_(torch.from_numpy(m))
 
+        # Generate random latents.
         self.w0_seed = w0_seed
         self.w_load = w_load
 
@@ -246,12 +254,19 @@ class Renderer:
         if w_plus:
             self.w = w.detach()
         else:
-            self.w = w[:,0,:].detach()
+            self.w = w[:, 0, :].detach()
         self.w.requires_grad = True
         self.w_optim = torch.optim.Adam([self.w], lr=lr)
 
         self.feat_refs = None
         self.points0_pt = None
+
+    def update_lr(self, lr):
+
+        del self.w_optim
+        self.w_optim = torch.optim.Adam([self.w], lr=lr)
+        print(f'Rebuild optimizer with lr: {lr}')
+        print('    Remain feat_refs and points0_pt')
 
     def _render_drag_impl(self, res,
         points          = [],
@@ -274,6 +289,7 @@ class Renderer:
         untransform     = False,
         is_drag         = False,
         reset           = False,
+        to_pil          = False,
         **kwargs
     ):
         G = self.G
@@ -361,6 +377,10 @@ class Renderer:
             img = img / img.norm(float('inf'), dim=[1,2], keepdim=True).clip(1e-8, 1e8)
         img = img * (10 ** (img_scale_db / 20))
         img = (img * 127.5 + 128).clamp(0, 255).to(torch.uint8).permute(1, 2, 0)
+        if to_pil:
+            from PIL import Image
+            img = img.cpu().numpy()
+            img = Image.fromarray(img)
         res.image = img
 
 #----------------------------------------------------------------------------

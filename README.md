@@ -20,7 +20,7 @@ To download pre-trained weights, simply run:
 ```sh
 sh scripts/download_model.sh
 ```
-If you want to try StyleGAN-Human and the Landscapes HQ (LHQ) dataset, please download weights from these links: [StyleGAN-Human](https://drive.google.com/file/d/1dlFEHbu-WzQWJl7nBBZYcTyo000H9hVm/view?usp=sharing), [LHQ](https://drive.google.com/file/d/16twEf0T9QINAEoMsWefoWiyhcTd-aiWc/view?usp=sharing), and put them under `./checkpoints`.  
+If you want to try StyleGAN-Human and the Landscapes HQ (LHQ) dataset, please download weights from these links: [StyleGAN-Human](https://drive.google.com/file/d/1dlFEHbu-WzQWJl7nBBZYcTyo000H9hVm/view?usp=sharing), [LHQ](https://drive.google.com/file/d/16twEf0T9QINAEoMsWefoWiyhcTd-aiWc/view?usp=sharing), and put them under `./checkpoints`.
 
 Feel free to try other pretrained StyleGAN.
 
@@ -32,6 +32,11 @@ sh scripts/gui.sh
 ```
 
 This GUI supports editing GAN-generated images. To edit a real image, you need to first perform GAN inversion using tools like [PTI](https://github.com/danielroich/PTI). Then load the new latent code and model weights to the GUI.
+
+You can run DragGAN Gradio demo as well:
+```sh
+python visualizer_drag_gradio.py
+```
 
 ## Acknowledgement
 
@@ -48,7 +53,7 @@ Any form of use and derivative of this code must preserve the watermarking funct
 
 ```bibtex
 @inproceedings{pan2023draggan,
-    title={Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold}, 
+    title={Drag Your GAN: Interactive Point-based Manipulation on the Generative Image Manifold},
     author={Pan, Xingang and Tewari, Ayush, and Leimk{\"u}hler, Thomas and Liu, Lingjie and Meka, Abhimitra and Theobalt, Christian},
     booktitle = {ACM SIGGRAPH 2023 Conference Proceedings},
     year={2023}
