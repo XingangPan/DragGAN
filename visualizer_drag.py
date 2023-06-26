@@ -177,15 +177,16 @@ class Visualizer(imgui_window.ImguiWindow):
                     if self.result.init_net:
                         self.drag_widget.reset_point()
 
-        # if self.check_update_mask(**self.args):
-        #     h, w, _ = self.result.image.shape
-        #     self.drag_widget.init_mask(w, h)
-
         # Display.
         max_w = self.content_width - self.pane_w
         max_h = self.content_height
         pos = np.array([self.pane_w + max_w / 2, max_h / 2])
         if 'image' in self.result:
+            # Reset mask after loading a new pickle or changing seed.
+            if self.check_update_mask(**self.args):
+                h, w, _ = self.result.image.shape
+                self.drag_widget.init_mask(w, h)
+
             if self._tex_img is not self.result.image:
                 self._tex_img = self.result.image
                 if self._tex_obj is None or not self._tex_obj.is_compatible(image=self._tex_img):

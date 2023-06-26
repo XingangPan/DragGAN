@@ -382,6 +382,6 @@ class Renderer:
             img = img.cpu().numpy()
             img = Image.fromarray(img)
         res.image = img
-        res.w = ws.cpu().numpy()
+        res.w = ws.detach().cpu().numpy()
 
 #----------------------------------------------------------------------------
