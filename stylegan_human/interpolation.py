@@ -116,9 +116,10 @@ def main(
 ):
     
 
-    device = torch.device('cuda')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu')
+    dtype = torch.float32 if device.type == 'mps' else torch.float64
     with dnnlib.util.open_url(network_pkl) as f:
-        G = legacy.load_network_pkl(f)['G_ema'].to(device) # type: ignore
+        G = legacy.load_network_pkl(f)['G_ema'].to(device, dtype=dtype) # type: ignore
 
     outdir = os.path.join(outdir)
     if not os.path.exists(outdir):
@@ -132,8 +133,8 @@ def main(
         print('Require two seeds, randomly generate two now.')
         seeds = [seeds[0],random.randint(0,10000)]
 
-    z1 = torch.from_numpy(np.random.RandomState(seeds[0]).randn(1, G.z_dim)).to(device)
-    z2 = torch.from_numpy(np.random.RandomState(seeds[1]).randn(1, G.z_dim)).to(device)
+    z1 = torch.from_numpy(np.random.RandomState(seeds[0]).randn(1, G.z_dim)).to(device, dtype=dtype)
+    z2 = torch.from_numpy(np.random.RandomState(seeds[1]).randn(1, G.z_dim)).to(device, dtype=dtype)
     img1 = generate_image_from_z(G, z1, noise_mode, truncation_psi, device)
     img2 = generate_image_from_z(G, z2, noise_mode, truncation_psi, device)
     img1.save(f'{outdir}/seed{seeds[0]:04d}.png')

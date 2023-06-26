@@ -49,16 +49,17 @@ def generate_style_mix(
 ):
     
     print('Loading networks from "%s"...' % network_pkl)
-    device = torch.device('cuda')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu')
+    dtype = torch.float32 if device.type == 'mps' else torch.float64
     with dnnlib.util.open_url(network_pkl) as f:
-        G = legacy.load_network_pkl(f)['G_ema'].to(device)
+        G = legacy.load_network_pkl(f)['G_ema'].to(device, dtype=dtype)
 
     os.makedirs(outdir, exist_ok=True)
 
     print('Generating W vectors...')
     all_seeds = list(set(row_seeds + col_seeds))
     all_z = np.stack([np.random.RandomState(seed).randn(G.z_dim) for seed in all_seeds])
-    all_w = G.mapping(torch.from_numpy(all_z).to(device), None)
+    all_w = G.mapping(torch.from_numpy(all_z).to(device, dtype=dtype), None)
     w_avg = G.mapping.w_avg
     all_w = w_avg + (all_w - w_avg) * truncation_psi
     w_dict = {seed: w for seed, w in zip(all_seeds, list(all_w))}
