@@ -47,7 +47,7 @@ This code is developed based on [StyleGAN3](https://github.com/NVlabs/stylegan3)
 The code related to the DragGAN algorithm is licensed under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
 However, most of this project are available under a separate license terms: all codes used or modified from [StyleGAN3](https://github.com/NVlabs/stylegan3) is under the [Nvidia Source Code License](https://github.com/NVlabs/stylegan3/blob/main/LICENSE.txt).
 
-Any form of use and derivative of this code must preserve the watermarking functionality.
+Any form of use and derivative of this code must preserve the watermarking functionality showing "AI Generated".
 
 ## BibTeX
 
