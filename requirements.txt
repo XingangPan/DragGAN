@@ -1,0 +1,6 @@
+torch
+torchvision
+Ninja
+gradio
+huggingface_hub
+hf_transfer
