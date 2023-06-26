@@ -15,7 +15,7 @@ from gradio_utils import (ImageMask, draw_mask_on_image, draw_points_on_image,
 from viz.renderer import Renderer, add_watermark_np
 
 parser = ArgumentParser()
-parser.add_argument('--share', action='store_true')
+parser.add_argument('--share', action='store_true',default='True')
 parser.add_argument('--cache-dir', type=str, default='./checkpoints')
 args = parser.parse_args()
 
@@ -156,7 +156,7 @@ print(os.listdir(cache_dir))
 print('Valid checkpoint file:')
 print(valid_checkpoints_dict)
 
-init_pkl = 'stylegan_human_v2_512'
+init_pkl = 'stylegan2_lions_512_pytorch'
 
 with gr.Blocks() as app:
 
