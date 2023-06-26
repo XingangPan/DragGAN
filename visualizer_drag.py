@@ -177,9 +177,9 @@ class Visualizer(imgui_window.ImguiWindow):
                     if self.result.init_net:
                         self.drag_widget.reset_point()
 
-        if self.check_update_mask(**self.args):
-            h, w, _ = self.result.image.shape
-            self.drag_widget.init_mask(w, h)
+        # if self.check_update_mask(**self.args):
+        #     h, w, _ = self.result.image.shape
+        #     self.drag_widget.init_mask(w, h)
 
         # Display.
         max_w = self.content_width - self.pane_w
