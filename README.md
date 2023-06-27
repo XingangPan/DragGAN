@@ -35,7 +35,19 @@
 
 ## Requirements
 
-Please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).
+If you have CUDA graphic card, please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).  
+
+Otherwise (for GPU acceleration on MacOS with Silicon Mac M1/M2, or just CPU) try the following:
+
+```sh
+cat environment.yml | \
+  grep -v -E 'nvidia|cuda' > environment-no-nvidia.yml && \
+    conda env create -f environment-no-nvidia.yml
+conda activate stylegan3
+
+# On MacOS
+export PYTORCH_ENABLE_MPS_FALLBACK=1
+```
 
 ## Download pre-trained StyleGAN2 weights
 

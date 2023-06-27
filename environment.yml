@@ -5,11 +5,12 @@ channels:
 dependencies:
   - python >= 3.8
   - pip
-  - numpy>=1.20
+  - numpy>=1.25
   - click>=8.0
-  - pillow=8.3.1
-  - scipy=1.7.1
-  - pytorch=1.9.1
+  - pillow=9.4.0
+  - scipy=1.11.0
+  - pytorch>=2.0.1
+  - torchvision>=0.15.2
   - cudatoolkit=11.1
   - requests=2.26.0
   - tqdm=4.62.2
@@ -17,8 +18,10 @@ dependencies:
   - matplotlib=3.4.2
   - imageio=2.9.0
   - pip:
-    - imgui==1.3.0
-    - glfw==2.2.0
+    - imgui==2.0.0
+    - glfw==2.6.1
+    - gradio==3.35.2
     - pyopengl==3.1.5
     - imageio-ffmpeg==0.4.3
-    - pyspng
+    # pyspng is currently broken on MacOS (see https://github.com/nurpax/pyspng/pull/6 for instance)
+    - pyspng-seunglab

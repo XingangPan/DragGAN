@@ -63,9 +63,10 @@ def generate_images(
 
     else: 
         import torch
-        device = torch.device('cuda')
+        device = torch.device('cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu')
+        dtype = torch.float32 if device.type == 'mps' else torch.float64
         with dnnlib.util.open_url(network_pkl) as f:
-            G = legacy.load_network_pkl(f)['G_ema'].to(device) # type: ignore
+            G = legacy.load_network_pkl(f)['G_ema'].to(device, dtype=dtype) # type: ignore
     os.makedirs(outdir, exist_ok=True)
 
 
@@ -92,7 +93,7 @@ def generate_images(
 
         else: ## stylegan v2/v3
             label = torch.zeros([1, G.c_dim], device=device)
-            z = torch.from_numpy(np.random.RandomState(seed).randn(1, G.z_dim)).to(device)
+            z = torch.from_numpy(np.random.RandomState(seed).randn(1, G.z_dim)).to(device, dtype=dtype)
             if target_z.size==0:
                 target_z= z.cpu()
             else:

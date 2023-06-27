@@ -69,7 +69,8 @@ def add_watermark_np(input_image_array, watermark_text="AI Generated"):
 
 class Renderer:
     def __init__(self, disable_timing=False):
-        self._device        = torch.device('cuda')
+        self._device        = torch.device('cuda' if torch.cuda.is_available() else 'mps' if torch.backends.mps.is_available() else 'cpu')
+        self._dtype         = torch.float32 if self._device.type == 'mps' else torch.float64
         self._pkl_data      = dict()    # {pkl: dict | CapturedException, ...}
         self._networks      = dict()    # {cache_key: torch.nn.Module, ...}
         self._pinned_bufs   = dict()    # {(shape, dtype): torch.Tensor, ...}
@@ -241,7 +242,7 @@ class Renderer:
 
         if self.w_load is None:
             # Generate random latents.
-            z = torch.from_numpy(np.random.RandomState(w0_seed).randn(1, 512)).to(self._device).float()
+            z = torch.from_numpy(np.random.RandomState(w0_seed).randn(1, 512)).to(self._device, dtype=self._dtype)
 
             # Run mapping network.
             label = torch.zeros([1, G.c_dim], device=self._device)
