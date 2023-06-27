@@ -44,7 +44,7 @@
 
 If you have CUDA graphic card, please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).  
 
-The usual installation steps involved the following commands, they should set up the correct CUDA version
+The usual installation steps involve the following commands, they should set up the correct CUDA version and all the python packages
 
 ```
 conda env create python=3.7 -f environment.yml
