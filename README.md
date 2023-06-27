@@ -35,7 +35,7 @@
 
 ## Requirements
 
-If you have CUDA graphic card, please follow the requirements of [https://github.com/NVlabs/stylegan3](https://github.com/NVlabs/stylegan3).
+If you have CUDA graphic card, please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).  
 
 Otherwise (for GPU acceleration on MacOS with Silicon Mac M1/M2, or just CPU) try the following:
 

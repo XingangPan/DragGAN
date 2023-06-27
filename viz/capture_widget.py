@@ -31,7 +31,7 @@ class CaptureWidget:
         viz = self.viz
         try:
             _height, _width, channels = image.shape
-            assert channels in [1, 3]
+            print(viz.result)
             assert image.dtype == np.uint8
             os.makedirs(self.path, exist_ok=True)
             file_id = 0
@@ -43,8 +43,9 @@ class CaptureWidget:
             if channels == 1:
                 pil_image = PIL.Image.fromarray(image[:, :, 0], 'L')
             else:
-                pil_image = PIL.Image.fromarray(image, 'RGB')
+                pil_image = PIL.Image.fromarray(image[:, :, :3], 'RGB')
             pil_image.save(os.path.join(self.path, f'{file_id:05d}.png'))
+            np.save(os.path.join(self.path, f'{file_id:05d}.npy'), viz.result.w)
         except:
             viz.result.error = renderer.CapturedException()
 
