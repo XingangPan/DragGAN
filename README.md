@@ -62,6 +62,10 @@ To download pre-trained weights, simply run:
 ```sh
 sh scripts/download_model.sh
 ```
+Or for windows:
+```
+.\scripts\download_model.bat
+```
 If you want to try StyleGAN-Human and the Landscapes HQ (LHQ) dataset, please download weights from these links: [StyleGAN-Human](https://drive.google.com/file/d/1dlFEHbu-WzQWJl7nBBZYcTyo000H9hVm/view?usp=sharing), [LHQ](https://drive.google.com/file/d/16twEf0T9QINAEoMsWefoWiyhcTd-aiWc/view?usp=sharing), and put them under `./checkpoints`.
 
 Feel free to try other pretrained StyleGAN.
@@ -72,10 +76,14 @@ To start the DragGAN GUI, simply run:
 ```sh
 sh scripts/gui.sh
 ```
+If you are using windows, you can run:
+```
+.\scripts\gui.bat
+```
 
 This GUI supports editing GAN-generated images. To edit a real image, you need to first perform GAN inversion using tools like [PTI](https://github.com/danielroich/PTI). Then load the new latent code and model weights to the GUI.
 
-You can run DragGAN Gradio demo as well:
+You can run DragGAN Gradio demo as well, this is universal for both windows and linux:
 ```sh
 python visualizer_drag_gradio.py
 ```
@@ -84,6 +92,7 @@ python visualizer_drag_gradio.py
 
 This code is developed based on [StyleGAN3](https://github.com/NVlabs/stylegan3). Part of the code is borrowed from [StyleGAN-Human](https://github.com/stylegan-human/StyleGAN-Human).
 
+(cheers to the community as well)
 ## License
 
 The code related to the DragGAN algorithm is licensed under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
