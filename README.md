@@ -80,6 +80,14 @@ You can run DragGAN Gradio demo as well:
 python visualizer_drag_gradio.py
 ```
 
+If you are running the project under WSL2, do the following:
+
+1. ```Install Conda ```
+2. PyOpenGL must be version 3.1.5
+3. ```conda install -c conda-forge libstdcxx-ng```
+4. gui_utils/glfw_window.py - replace the variables self.monitor_width & self.monitor_height in the set_window_size function with your own variables (for example 1920x1080).
+5. ```python visualizer_drag.py```
+
 ## Acknowledgement
 
 This code is developed based on [StyleGAN3](https://github.com/NVlabs/stylegan3). Part of the code is borrowed from [StyleGAN-Human](https://github.com/stylegan-human/StyleGAN-Human).
