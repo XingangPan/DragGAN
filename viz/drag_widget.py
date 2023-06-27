@@ -90,6 +90,7 @@ class DragWidget:
     @imgui_utils.scoped_by_object_id
     def __call__(self, show=True):
         viz = self.viz
+        reset = False
         if show:
             with imgui_utils.grayed_out(self.disabled_time != 0):
                 imgui.text('Drag')
