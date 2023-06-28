@@ -44,6 +44,19 @@
 
 If you have CUDA graphic card, please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).  
 
+The usual installation steps involve the following commands, they should set up the correct CUDA version and all the python packages
+
+```
+conda env create python=3.7 -f environment.yml
+conda activate stylegan3
+```
+
+Then install the additional requirements
+
+```
+pip install -r requirements
+```
+
 Otherwise (for GPU acceleration on MacOS with Silicon Mac M1/M2, or just CPU) try the following:
 
 ```sh
