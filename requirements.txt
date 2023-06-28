@@ -7,3 +7,4 @@ hf_transfer
 pyopengl
 imgui
 glfw
+scipy
