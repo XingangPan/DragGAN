@@ -64,6 +64,19 @@ cat environment.yml | \
   grep -v -E 'nvidia|cuda' > environment-no-nvidia.yml && \
     conda env create -f environment-no-nvidia.yml
 conda activate stylegan3
+```
+
+## Run Gradio visualizer in Docker 
+
+Provided docker image is based on NGC PyTorch repository. To quickly try out visualizer in Docker, run the following:  
+
+```sh
+docker build . -t draggan:latest  
+docker run -v  "$PWD":/workspace/src -it draggan:latest bash  
+cd src && python visualizer_drag_gradio.py  
+```
+Now you can open a shared link from Gradio (printed in the terminal console).   
+Beware the Docker image takes about 25GB of disk space!
 
 # On MacOS
 export PYTORCH_ENABLE_MPS_FALLBACK=1
