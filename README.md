@@ -75,8 +75,8 @@ Provided docker image is based on NGC PyTorch repository. To quickly try out vis
 
 ```sh
 docker build . -t draggan:latest  
-docker run -v  "$PWD":/workspace/src -it draggan:latest bash  
-cd src && python visualizer_drag_gradio.py  
+docker run -p 7860: 7860 -v "$PWD":/workspace/src -it draggan:latest bash  
+cd src && python visualizer_drag_gradio.py --listen
 ```
 Now you can open a shared link from Gradio (printed in the terminal console).   
 Beware the Docker image takes about 25GB of disk space!
