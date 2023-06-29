@@ -92,9 +92,9 @@ You can run DragGAN Gradio demo as well:
 ```sh
 python visualizer_drag_gradio.py
 ```
-If you want to run DragGAN Gradio demo with 0.0.0.0 as server name, allowing to respond to network requests:
+If you want to run DragGAN Gradio demo with given server name, for example host 0.0.0.0 to accessible on local network:
 ```sh
-python visualizer_drag_gradio.py --listen
+python visualizer_drag_gradio.py --host=0.0.0.0
 ```
 If you want to run DragGAN Gradio demo with given server port, for example port 8888:
 ```sh

@@ -18,8 +18,8 @@ import inspect
 parser = ArgumentParser()
 parser.add_argument('--share', action='store_true',default='True')
 parser.add_argument('--cache-dir', type=str, default='./checkpoints')
-parser.add_argument('--listen', action='store_true',
-                    help="launch gradio with 0.0.0.0 as server name, allowing to respond to network requests")
+parser.add_argument('--host', type=str,
+                    help="launch gradio with given server name", default=None)
 parser.add_argument('--port', type=int,
                     help="launch gradio with given server port", default=None)
 args = parser.parse_args()
@@ -873,4 +873,4 @@ def_server_port = params["server_port"].default
 
 gr.close_all()
 app.queue(concurrency_count=3, max_size=20)
-app.launch(share=args.share, server_name="0.0.0.0" if args.listen else def_server_name, server_port=args.port if args.port is not None else def_server_port)
+app.launch(share=args.share, server_name=args.host if args.host is not None else def_server_name, server_port=args.port if args.port is not None else def_server_port)
