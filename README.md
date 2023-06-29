@@ -64,6 +64,9 @@ cat environment.yml | \
   grep -v -E 'nvidia|cuda' > environment-no-nvidia.yml && \
     conda env create -f environment-no-nvidia.yml
 conda activate stylegan3
+
+# On MacOS
+export PYTORCH_ENABLE_MPS_FALLBACK=1
 ```
 
 ## Run Gradio visualizer in Docker 
@@ -77,10 +80,6 @@ cd src && python visualizer_drag_gradio.py
 ```
 Now you can open a shared link from Gradio (printed in the terminal console).   
 Beware the Docker image takes about 25GB of disk space!
-
-# On MacOS
-export PYTORCH_ENABLE_MPS_FALLBACK=1
-```
 
 ## Download pre-trained StyleGAN2 weights
 
