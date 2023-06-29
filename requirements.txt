@@ -1,3 +1,4 @@
+chardet
 torch
 torchvision
 Ninja
