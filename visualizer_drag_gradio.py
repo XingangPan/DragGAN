@@ -17,6 +17,11 @@ from viz.renderer import Renderer, add_watermark_np
 parser = ArgumentParser()
 parser.add_argument('--share', action='store_true',default='True')
 parser.add_argument('--cache-dir', type=str, default='./checkpoints')
+parser.add_argument(
+    "--listen",
+    action="store_true",
+    help="launch gradio with 0.0.0.0 as server name, allowing to respond to network requests",
+)
 args = parser.parse_args()
 
 cache_dir = args.cache_dir
@@ -863,4 +868,4 @@ with gr.Blocks() as app:
 
 gr.close_all()
 app.queue(concurrency_count=3, max_size=20)
-app.launch(share=args.share)
+app.launch(share=args.share, server_name="0.0.0.0" if args.listen else "127.0.0.1")
