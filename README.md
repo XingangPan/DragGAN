@@ -84,12 +84,9 @@ Beware the Docker image takes about 25GB of disk space!
 ## Download pre-trained StyleGAN2 weights
 
 To download pre-trained weights, simply run:
-```sh
-sh scripts/download_model.sh
+
 ```
-Or for windows:
-```
-.\scripts\download_model.bat
+python scripts/download_model.py
 ```
 If you want to try StyleGAN-Human and the Landscapes HQ (LHQ) dataset, please download weights from these links: [StyleGAN-Human](https://drive.google.com/file/d/1dlFEHbu-WzQWJl7nBBZYcTyo000H9hVm/view?usp=sharing), [LHQ](https://drive.google.com/file/d/16twEf0T9QINAEoMsWefoWiyhcTd-aiWc/view?usp=sharing), and put them under `./checkpoints`.
 
