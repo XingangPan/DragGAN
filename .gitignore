@@ -99,7 +99,7 @@ ENV/
 [Ll]ib64
 [Ll]ocal
 [Ss]cripts
-!scripts\download_model.bat
+!scripts/
 pyvenv.cfg
 .venv
 pip-selfcheck.json
