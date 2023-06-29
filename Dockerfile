@@ -14,12 +14,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libxinerama-dev \
         libxcursor-dev \
         libxi-dev \
-        libxxf86vm-dev
+        libxxf86vm-dev \
+        && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
 
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /workspace
 
