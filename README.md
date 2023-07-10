@@ -54,7 +54,7 @@ conda activate stylegan3
 Then install the additional requirements
 
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 Otherwise (for GPU acceleration on MacOS with Silicon Mac M1/M2, or just CPU) try the following:
