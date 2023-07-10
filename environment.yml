@@ -8,7 +8,7 @@ dependencies:
   - numpy>=1.25
   - click>=8.0
   - pillow=9.4.0
-  - scipy=1.11.0
+  - scipy=1.11.1
   - pytorch>=2.0.1
   - torchvision>=0.15.2
   - cudatoolkit=11.1
