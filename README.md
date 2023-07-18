@@ -44,7 +44,7 @@
 
 If you have CUDA graphic card, please follow the requirements of [NVlabs/stylegan3](https://github.com/NVlabs/stylegan3#requirements).  
 
-The usual installation steps involve the following commands, they should set up the correct CUDA version and all the python packages
+The usual installation steps involve the following commands, you should set up the correct CUDA version and all the python packages
 
 ```
 conda env create -f environment.yml
@@ -71,7 +71,7 @@ export PYTORCH_ENABLE_MPS_FALLBACK=1
 
 ## Run Gradio visualizer in Docker 
 
-Provided docker image is based on NGC PyTorch repository. To quickly try out visualizer in Docker, run the following:  
+Provided docker image is based on NGC PyTorch repository. To quickly try out the visualizer in Docker, run the following:  
 
 ```sh
 docker build . -t draggan:latest  
@@ -121,9 +121,9 @@ This code is developed based on [StyleGAN3](https://github.com/NVlabs/stylegan3)
 ## License
 
 The code related to the DragGAN algorithm is licensed under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/).
-However, most of this project are available under a separate license terms: all codes used or modified from [StyleGAN3](https://github.com/NVlabs/stylegan3) is under the [Nvidia Source Code License](https://github.com/NVlabs/stylegan3/blob/main/LICENSE.txt).
+However, most parts of this project are available under a separate license terms: all codes used or modified from [StyleGAN3](https://github.com/NVlabs/stylegan3) is under the [Nvidia Source Code License](https://github.com/NVlabs/stylegan3/blob/main/LICENSE.txt).
 
-Any form of use and derivative of this code must preserve the watermarking functionality showing "AI Generated".
+Any form of use and derivative of this code must preserve the watermarking functionality showing "AI-Generated".
 
 ## BibTeX
 
