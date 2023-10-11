@@ -1,3 +1,8 @@
+chardet
+torch
+torchvision
+Ninja
+gradio
 torch>=2.0.0
 scipy>=1.11.1
 Ninja==1.10.2
