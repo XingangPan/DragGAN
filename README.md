@@ -113,6 +113,14 @@ You can run DragGAN Gradio demo as well, this is universal for both windows and 
 ```sh
 python visualizer_drag_gradio.py
 ```
+If you want to run DragGAN Gradio demo with given server name, for example host 0.0.0.0 to accessible on local network:
+```sh
+python visualizer_drag_gradio.py --host=0.0.0.0
+```
+If you want to run DragGAN Gradio demo with given server port, for example port 8888:
+```sh
+python visualizer_drag_gradio.py --port=8888
+```
 
 ## Acknowledgement
 
